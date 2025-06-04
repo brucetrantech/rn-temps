@@ -5,15 +5,12 @@ import {
 } from "react-native";
 import {
     FontTypeValues,
-} from "../../fundamentions/fonts";
-import {
-    ColorThemeKeys,
-    VariantColorState,
-} from "../../fundamentions/variants";
+    VariantColor,
+} from "@libs";
 
 export interface TextProps extends RNTextProps {
-    color?: ColorThemeKeys;
-    colorState?: VariantColorState;
+    color?: string;
+    colorType?: VariantColor;
     type?: FontTypeValues;
     style?: StyleProp<TextStyle>;
     bold?: boolean;

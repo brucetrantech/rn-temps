@@ -102,7 +102,7 @@ export const fonts: {
         main: {
             fontSize: FontSize.s22,
             fontWeight: FonWeight.SemiBold,
-            lineHeight: 24,
+            lineHeight: 26,
             fontFamily: FontFamily.Poppins.SemiBold,
         },
         bold: {

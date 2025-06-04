@@ -8,17 +8,10 @@ export type VariantMode =
     | 'plain';
 
 export type VariantSize =
-    | 's4' // extremely-small
-    | 's3' // smallest
-    | 's2' // smaller
-    | 's1' // small
-    | 's0' // semi-small
-    | 'default' // normal
-    | 'l0' // semi-large
-    | 'l1' // large
-    | 'l2' // larger
-    | 'l3' // largest
-    | 'l4'; // extremely-large
+    | 'small'
+    | 'normal'
+    | 'medium'
+    | 'large'
 
 export type VariantAppearance = 'dark' | 'light' | 'system';
 
@@ -38,6 +31,8 @@ export type VariantColorState =
     | 'ground'
     | 'touched'
     | 'shadow';
+
+export type ColorThemeType = `${VariantColor}.${VariantColorState}`;
 
 /**
  * Themes

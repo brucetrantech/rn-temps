@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-	Text as RNText,
 	StyleSheet,
 	View,
 } from 'react-native';
 import {
-	Text,
 	ContextThemeProvider,
+	Button,
+	Text,
 } from '@libs';
 
 
@@ -15,11 +15,29 @@ export default function App() {
 	return (
 		<ContextThemeProvider
 			initialValue={{
-				state: {
-					color: {
+				color: {
+					light: {
+						primary: {
+							main: '#007AFF',
+							ground: '#D0E3F7',
+							shadow: '#D0E3F7',
+							touched: '#007AFF',
+						},
+						secondary: {
+							main: '#1BA34D',
+							ground: '#',
+							shadow: '#',
+							touched: '#1AADDA',
+						},
+						disabled: {
+							main: '#B9B9BC',
+							ground: '#EFEFF0',
+						}
+					},
+					dark: {
 						primary: {
 							main: '#1AADDA',
-							ground: '#1BA34D',
+							ground: '#111145',
 							shadow: '#123DFC',
 							touched: '#146FFF',
 						},
@@ -29,35 +47,17 @@ export default function App() {
 							shadow: '#',
 							touched: '#1AADDA',
 						},
-					}
-				}
+						disabled: {
+							main: '#B9B9BC',
+							ground: '#EFEFF0',
+						}
+					},
+				},
 			}}
 		>
 			<View style={styles.view}>
-				{/* <RNText style={{
-					fontSize: 34,
-					fontWeight: '700',
-					color: '#123DFC',
-				}}>Whereas disregard</RNText>
-
-				<Text type="large" color="primary">Whereas disregard</Text>
-				<RNText
-					style={{
-						fontSize: 34,
-						fontWeight: '700',
-						color: '#000123',
-					}}
-				>Whereas disregard</RNText> */}
-				<Text type="large" color="secondary" italic>Whereas disregard</Text>
-				<Text type="title1" color="primary" italic>Whereas disregard</Text>
-				<Text type="title2" color="secondary" italic>Whereas disregard</Text>
-				<Text type="title3" color="primary" italic>Whereas disregard</Text>
-				<Text type="headline" color="secondary" bold italic>Whereas disregard</Text>
-				<Text type="body" color="primary" italic>Whereas disregard</Text>
-				<Text type="callout" color="secondary">Whereas disregard</Text>
-				<Text type="subheadline" color="primary">Whereas disregard</Text>
-				<Text type="footnote" color="secondary">Whereas disregard</Text>
-				<Text type="caption" color="primary">Whereas disregard</Text>
+				<Text type="large" colorType="secondary" italic>Whereas disregard</Text>
+				<Button title="Button" />
 			</View>
 		</ContextThemeProvider>
   	)

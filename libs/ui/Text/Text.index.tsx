@@ -12,17 +12,15 @@ import {
 import {
     Color,
     ColorName,
-} from '@libs/fundamentions/colors';
-import {
     fonts,
     FontType,
-} from '@libs/fundamentions/fonts';
-import { useContextTheme } from '@libs/context/context';
+    useColorTheme,
+} from '@libs';
 
 export default function Text ({
     type = FontType.Callout,
-    color = 'primary',
-    colorState = 'main',
+    color,
+    colorType = 'primary',
     style,
     bold,
     italic,
@@ -30,20 +28,21 @@ export default function Text ({
     ...restProps
 }: TextProps) {
 
-    const { state } = useContextTheme();
+    const colorTheme = useColorTheme();
 
     const textStyles = useMemo((): StyleProp<TextStyle> => {
+        
         const textColor = (() => {
-            const _color = state?.color?.[color]?.[colorState];
-            if (_color) {
-                return _color;
+            const inlineColor = (style as any)?.color;
+            if (inlineColor) {
+                return inlineColor;
             }
-            const colorStyle = (style as any)?.color;
-            if (colorStyle) {
-                return colorStyle;
-            } 
-            return Color[ColorName.Slate][700];
+            if (color) {
+                return color;
+            }
+            colorTheme[colorType]?.main || Color[ColorName.Slate][700];
         })();
+
         const textFont = (() => {
             const _fontStyle = bold ? fonts[type].bold : fonts[type].main;
             if (italic) {
@@ -52,7 +51,7 @@ export default function Text ({
             return _fontStyle;
         })();
         return Object.assign({}, textFont, { color: textColor }, style);
-    }, [state, type, color, colorState, bold, italic, style]);
+    }, [colorTheme, type, colorType, color, bold, italic, style]);
 
     return (
         <RNText

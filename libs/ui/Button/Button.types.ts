@@ -1,21 +1,29 @@
 import {
-    PropsWithChildren,
-} from 'react';
-import {
     StyleProp,
     TextStyle,
     ViewStyle,
-} from "react-native";
+    type TouchableOpacityProps as RNTouchableOpacityProps,
+} from 'react-native';
 import {
+    VariantColor,
     VariantMode,
-} from "../../fundamentions/variants";
+    VariantSize,
+} from '@libs';
 
-export type ButtonProps = PropsWithChildren<{
-    mode: VariantMode;
+type IconPositionType = 'left' | 'right';
+
+export interface ButtonProps extends RNTouchableOpacityProps {
+    mode?: VariantMode;
+    size?: VariantSize;
+    colorType?: VariantColor;
     title?: string | React.ReactNode;
-    icon?: React.ReactNode;
-    buttonStyle?: StyleProp<ViewStyle>;
+    icon?: string | React.ReactNode;
+    iconPosition?: IconPositionType;
+    loading?: boolean;
+    disabled?: boolean;
+    buttonStyle?: StyleProp<ViewStyle>; 
     titleStyle?: StyleProp<TextStyle>;
-
-}>;
-
+    buttonColor?: string;
+    titleColor?: string;
+    children?: React.ReactNode;
+};
