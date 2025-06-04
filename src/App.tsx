@@ -7,6 +7,7 @@ import {
 	ContextThemeProvider,
 	Button,
 	Text,
+	Icon,
 } from '@libs';
 
 
@@ -57,7 +58,13 @@ export default function App() {
 		>
 			<View style={styles.view}>
 				<Text type="large" colorType="secondary" italic>Whereas disregard</Text>
-				<Button title="Button" />
+				<Button
+					icon="code-scan"
+					title="Button"
+					size="medium"
+					colorType="secondary"
+					mode="outlined"
+				/>
 			</View>
 		</ContextThemeProvider>
   	)

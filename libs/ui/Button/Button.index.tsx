@@ -23,6 +23,7 @@ import {
     getColorsDisabledButton,
     getColorsEnabledButton,
 } from './Button.helpers';
+import { IconName } from '../Icon/Icon.resources';
 
 export default function ButtonContained ({
     mode = 'filled',
@@ -77,7 +78,7 @@ export default function ButtonContained ({
                     }
                 })();
                 return (
-                <Text
+                    <Text
                         type={textType}
                         color={colorCollection.titleColor}
                         style={titleStyle}
@@ -93,9 +94,22 @@ export default function ButtonContained ({
             return undefined;
         }
         if (typeof icon === 'string') {
-            return <Icon name={icon} />
+            const iconSize = {
+                large: 32,
+                medium: 28,
+                normal: 24,
+                small: 16,
+            }[size];
+            return (
+                <Icon
+                    name={icon as IconName}
+                    color={colorCollection.iconColor}
+                    size={iconSize}
+                />
+            );
         }
-    }, [icon, colorCollection.iconColor]);
+        return icon;
+    }, [icon, size, colorCollection.iconColor]);
 
     const customizedStyles = useMemo((): StyleProp<ViewStyle> => {
         const _modeStyles = ButtonModeStyles[mode];
